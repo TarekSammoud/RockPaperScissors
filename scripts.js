@@ -21,7 +21,7 @@ function playerSelection()
 function playRound(playerSelection,computerSelection)
 {
     if ((playerSelection==='rock')&&(computerSelection==='scissors'))
-        {    
+        {   
             return 1 ; 
         }   
     if ((playerSelection==='rock')&&(computerSelection==='paper'))
