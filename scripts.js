@@ -1,82 +1,117 @@
+var score = 0 ;
+var pcscore = 0 ; 
+function calclScore (){
+    score ++ ;
+    document.getElementById('score').textContent = score ; 
+}
 
+function calclSorePC(){
+    pcscore ++ ;
+    document.getElementById('pcscore').textContent = pcscore ; 
+}
 
-function computerPlay()
-{
-    const choices=['rock','paper','scissors'] ;
-    const index = parseInt(Math.floor(Math.random() * choices.length));
-    const result = choices[index]
-    alert(`Computer chooses : ${result}`) ;
-    return result ; 
+function RPC() {
+
+    const paper = document.getElementById('btnPaper') ;
+    const rock = document.getElementById("btnRock") ;
+    const scissors = document.getElementById("btnScissors") ;
+
+    paper.addEventListener('click' , () => {
+        const choices=['rock','paper','scissors'] ;
+        const index = parseInt(Math.floor(Math.random() * choices.length));
+        const ComputerChoice = choices[index]
+        console.log(`computer chose : ${ComputerChoice}`) ;
+        const result = FindWinner('paper',ComputerChoice)
+            if (result==1)
+                { calclScore()
+
+                    const div = document.querySelector(".result") ;
+                    div.textContent = 'player won round' ; 
+                }
+                else
+                { calclSorePC()
+
+                    const div = document.querySelector(".result") ;
+                    div.textContent = 'pc won round' ; 
+                }
+    }) ; 
+
+    rock.addEventListener('click' , () => {
+        const choices=['rock','paper','scissors'] ;
+        const index = parseInt(Math.floor(Math.random() * choices.length));
+        const ComputerChoice = choices[index]
+        console.log(`computer chose : ${ComputerChoice}`) ;
+
+        const result = FindWinner('rock',ComputerChoice)
+            if (result==1)
+                {calclScore()
+
+                    const div = document.querySelector(".result") ;
+                    div.textContent = 'player won round' ; 
+                }
+                else
+                {calclSorePC()
+                    const div = document.querySelector(".result") ;
+                    div.textContent = 'pc won round' ; 
+                }
+    }) ; 
+
+    scissors.addEventListener('click' , () => {
+        const choices=['rock','paper','scissors'] ;
+        const index = parseInt(Math.floor(Math.random() * choices.length));
+        const ComputerChoice = choices[index]
+        console.log(`computer chose : ${ComputerChoice}`) ;
+
+        const result = FindWinner('scissors',ComputerChoice)
+            if (result==1)
+                {calclScore()
+
+                    const div = document.querySelector(".result") ;
+                    div.textContent = 'player won round' ; 
+                }
+                else if (result==0)
+                {calclSorePC()
+                    const div = document.querySelector(".result") ;
+                    div.textContent = 'pc won round' ; 
+                }
+
+                else 
+                {
+                    const div = document.querySelector(".result") ;
+                    div.textContent = 'draw' ; 
+                }
+                    
+    }) ; 
+
 
 }
 
-function playerSelection()
-{
-    const choice = prompt("What will you play? : ") ; 
 
-    const choicelow = choice.toLowerCase() ; 
-    return choicelow ; 
-}
-
-function playRound(playerSelection,computerSelection)
-{
+function FindWinner(playerSelection,computerSelection) {
     if ((playerSelection==='rock')&&(computerSelection==='scissors'))
-        {   
-            return 1 ; 
-        }   
-    if ((playerSelection==='rock')&&(computerSelection==='paper'))
-    {    
-    return 0 ; 
-}   
-
-        if ((playerSelection==='scissors')&&(computerSelection==='paper'))
-        {    
-            return 1 ; 
-        }   
-    if ((playerSelection==='scissors')&&(computerSelection==='rock'))
-    {    
-    return 0 ; 
-}   
-    
-    if ((playerSelection==='paper')&&(computerSelection==='rock'))
-    {    
-    return 1 ; 
-}   
-        if ((playerSelection==='paper')&&(computerSelection==='scissors'))
-        {    
-        return 0 ; 
+    {   console.log('player wins round') ; 
+        return 1 ; 
     }   
+if ((playerSelection==='rock')&&(computerSelection==='paper'))
+{     console.log('PC wins round') ; 
+return 0 ; 
+}   
 
-}
+    if ((playerSelection==='scissors')&&(computerSelection==='paper'))
+    {     console.log('player wins round') ; 
+        return 1 ; 
+    }   
+if ((playerSelection==='scissors')&&(computerSelection==='rock'))
+{     console.log('PC wins round') ; 
+return 0 ; 
+}   
 
-function game()
-{
-    let playerscore =0 ; 
-    let computerscore= 0 ; 
-    for (let i=0 ; i<5 ; i++)
-    {
-        let playerChoice = playerSelection() ; 
-        let computerChoice = computerPlay(); 
-        
-        if  (playRound(playerChoice,computerChoice)==1)
-            {
-            playerscore++ ; }
-        else 
-            computerscore++ ; 
-
-        alert(playerscore);
-        alert(computerscore);
-
-        
-    }
-
-    if (playerscore>computerscore)
-        alert("Player wins !! ") ; 
-    
-    else if (computerscore>playerscore)
-    alert("computer wins !! ") ; 
-
-    else 
-        alert ("Draw ! ") ;
-
+if ((playerSelection==='paper')&&(computerSelection==='rock'))
+{     console.log('player wins round') ; 
+return 1 ; 
+}   
+    if ((playerSelection==='paper')&&(computerSelection==='scissors'))
+    {    console.log('PC wins round') ; 
+    return 0 ; 
+}   
 }
