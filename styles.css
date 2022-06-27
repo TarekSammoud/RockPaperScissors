@@ -1,4 +1,7 @@
 
+html{
+}
+
 button{
     padding: 20px;
     border-radius: 12px;
@@ -12,4 +15,10 @@ button{
     
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
+}
+
+img{
+    width: 200px;
+    height: auto;
+    border-radius: 15px;
 }

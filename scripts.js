@@ -1,13 +1,47 @@
 var score = 0 ;
 var pcscore = 0 ; 
+
+function resetScore ()
+{
+    pcscore = 0 ; 
+    score = 0 ;
+}
+
+function announceWinner()
+{
+
+    console.log(`ANNOUNCE WINNER SCORE : ${score}`)
+
+    if ((score == 5) && (pcscore < 5))
+    {
+    document.getElementById('final-result').textContent = 'PLAYER WINS' ; }
+    
+    else if ((pcscore == 5) && (score != 5) )
+    document.getElementById('final-result').textContent = 'PC WINS' ; 
+
+    else if ( (pcscore ==  5) && (score == 5) )
+    document.getElementById('final-result').textContent = 'DRAW' ; 
+
+    else 
+    document.getElementById('final-result').textContent = '' ; 
+
+}   
+
 function calclScore (){
     score ++ ;
     document.getElementById('score').textContent = score ; 
+    announceWinner()
+    if ( (pcscore == 5) || (score == 5 ) )
+    resetScore (); 
+
 }
 
 function calclSorePC(){
     pcscore ++ ;
     document.getElementById('pcscore').textContent = pcscore ; 
+    announceWinner()
+    if ( (pcscore == 5) || (score == 5 ) )
+    resetScore (); 
 }
 
 function RPC() {
